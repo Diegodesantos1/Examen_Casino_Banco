@@ -63,6 +63,8 @@ def iniciar_ej1():
     Banco.main()
 ```
 
+![image](https://user-images.githubusercontent.com/91721855/234058137-8aee413c-bd8a-4fdb-b909-623e89b610c9.png)
+
 <h2 align = "center">Ejercicio 2: Banco</h2>
 
 El código empleado para resolverlo es el siguiente:
@@ -156,3 +158,6 @@ class Casino:
 def iniciar_ej2():
     Casino.main()
 ```
+
+![image](https://user-images.githubusercontent.com/91721855/234058890-0cd1de4f-7d34-4b7a-8d93-9db73db00bfc.png)
+

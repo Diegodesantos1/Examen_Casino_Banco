@@ -23,6 +23,7 @@ class Casino:
         time.sleep(3)
 
     def main():
+        jugadas = int(input('Introduce el número de jugadas: '))
         pool = multiprocessing.Pool(processes=4)
         dinero_hilos =[1000, 1000, 1000, 1000]
         cuenta = multiprocessing.Value('i', 5000)
@@ -71,6 +72,5 @@ class Casino:
             print(f'El saldo de la cuenta final es de {cuenta.value} €')
             print(f"El saldo final de los jugadores es de {dinero_hilos} €")
 
-if "__main__" == __name__:
-    jugadas = int(input('Introduce el número de jugadas: '))
+def iniciar_ej2():
     Casino.main()

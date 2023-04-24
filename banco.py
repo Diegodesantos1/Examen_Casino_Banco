@@ -4,7 +4,6 @@ import time
 import random
 from colorama import Fore, Style
 
-
 class Banco:
 
     def ingresar(cuenta, cantidad):

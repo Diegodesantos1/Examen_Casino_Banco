@@ -1,6 +1,7 @@
 import multiprocessing
 import time
 import random
+from introducir.numero import introducir_numero
 
 
 class Casino:
@@ -23,7 +24,7 @@ class Casino:
         time.sleep(3)
 
     def main():
-        jugadas = int(input('Introduce el número de jugadas: '))
+        jugadas = introducir_numero('Introduce el número de jugadas: ')
         pool = multiprocessing.Pool(processes=4)
         dinero_hilos =[1000, 1000, 1000, 1000]
         cuenta = multiprocessing.Value('i', 5000)

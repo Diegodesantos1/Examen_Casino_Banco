@@ -1,4 +1,5 @@
 import multiprocessing
+from multiprocessing import pool
 import time
 import random
 from colorama import Fore, Style
@@ -19,42 +20,35 @@ class Banco:
         time.sleep(random.random())
 
     def main():
+        pool = multiprocessing.Pool(processes=4)
         cuenta = multiprocessing.Value('i', 100)
-        procesos = []
         for i in range(40):
-            p = multiprocessing.Process(
-                target=Banco.ingresar, args=(cuenta, 100))
-            procesos.append(p)
-            p.start()
+            pool.apply_async(Banco.ingresar, (cuenta, 100))
+            print(Fore.GREEN + 'Se han ingresado', 100,)
+
         for i in range(20):
-            p = multiprocessing.Process(
-                target=Banco.ingresar, args=(cuenta, 50))
-            procesos.append(p)
-            p.start()
+            pool.apply_async(Banco.ingresar, (cuenta, 50))
+            print(Fore.GREEN + 'Se han ingresado', 50,)
+
         for i in range(60):
-            p = multiprocessing.Process(
-                target=Banco.ingresar, args=(cuenta, 20))
-            procesos.append(p)
-            p.start()
+            pool.apply_async(Banco.ingresar, (cuenta, 20))
+            print(Fore.GREEN + 'Se han ingresado', 20,)
+
         for i in range(40):
-            p = multiprocessing.Process(
-                target=Banco.retirar, args=(cuenta, 100))
-            procesos.append(p)
-            p.start()
+            pool.apply_async(Banco.retirar, (cuenta, 100))
+            print(Fore.RED + 'Se han retirado', 100,)
+
         for i in range(20):
-            p = multiprocessing.Process(
-                target=Banco.retirar, args=(cuenta, 50))
-            procesos.append(p)
-            p.start()
+            pool.apply_async(Banco.retirar, (cuenta, 50))
+            print(Fore.RED + 'Se han retirado', 50,)
+
         for i in range(60):
-            p = multiprocessing.Process(
-                target=Banco.retirar, args=(cuenta, 20))
-            procesos.append(p)
-            p.start()
-        for p in procesos:
-            p.join()
-        print(
-            Fore.BLUE + f'El saldo de la cuenta final es de {cuenta.value} €' + Style.RESET_ALL)
+            pool.apply_async(Banco.retirar, (cuenta, 20))
+            print(Fore.RED + 'Se han retirado', 20,)
+
+        pool.close()
+        pool.join()
+        print(Fore.BLUE +'El saldo final es', cuenta.value, '€' + Style.RESET_ALL)
 
 
 if __name__ == '__main__':

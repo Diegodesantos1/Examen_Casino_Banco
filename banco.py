@@ -51,5 +51,5 @@ class Banco:
         print(Fore.BLUE +'El saldo final es', cuenta.value, '€' + Style.RESET_ALL)
 
 
-if __name__ == '__main__':
+def iniciar_ej1():
     Banco.main()

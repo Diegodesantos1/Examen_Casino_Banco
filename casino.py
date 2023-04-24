@@ -15,3 +15,9 @@ class Casino:
         print('Se han apostado', cantidad,
               '€ a', par_impar)
         time.sleep(random.random())
+
+    def jugar_martingala(cuenta, cantidad, numero):
+        cuenta.value -= cantidad
+        print('Se han apostado', cantidad,
+              '€ a', numero)
+        time.sleep(random.random())
